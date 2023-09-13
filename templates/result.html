@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Spotify Top Track Finder</title>
+    <title>Spotify Top Track Finder (result)</title>
 </head>
 
 <body>
@@ -9,6 +9,9 @@
     {% if track_name and artist_name %}
         <p>Your most listened to song ever on Spotify is:</p>
         <p><strong>{{ track_name }}</strong> by {{ artist_name }}</p>
+        {% if album_cover_url %}
+            <img src="{{ album_cover_url }}" alt="Album Cover">
+        {% endif %}
     {% elif error_message %}
         <p>{{ error_message }}</p>
     {% endif %}
