@@ -3,7 +3,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from flask import Flask, render_template, request
 
-app = Flask(__flaskk__)
+app = Flask(__name__)
 
 client_id = 'dd734bbd1513415cbcc0a3d70b0824b9'
 client_secret = 'Ee0604902059c46eab1013330daa70015E'
@@ -13,7 +13,7 @@ def index():
     if request.method == 'post':
         spotify_username = request.form['username']
         sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri, scope="user-library-read user-read-recently-played"))
-        top_tracks = sp.current_user_top_tracks(time_range)
+        top_tracks = sp.current_user_top_tracks(time_range="long_term", limit=1)
  
         if top_tracks['items']:
             most_listened_track = top_tracks['items'][0]
@@ -31,6 +31,6 @@ def index():
 
     return render_template(index.html)
     
-if __flaskk__ == '__main__':
+if __name__ == '__main__':
     app.run(debug=True)        
 
