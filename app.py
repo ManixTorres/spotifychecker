@@ -6,7 +6,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 client_id = 'dd734bbd1513415cbcc0a3d70b0824b9'
-client_secret = 'Ee0604902059c46eab1013330daa70015E'
+client_secret = ###REDACTED
 redirect_uri = 'http://blacksunrisen.club/'
 
 def index():
